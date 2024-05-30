@@ -1,0 +1,13 @@
+{application, ring_calculator, [
+    {description, "A rebar plugin for Riak to compute ring configurations"},
+    {vsn, "1.0.0"},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {env, []},
+    {modules, []},
+    {licenses, ["Apache-2.0"]},
+    {links, []}
+ ]}.
