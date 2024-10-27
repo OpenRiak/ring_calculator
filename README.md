@@ -54,7 +54,7 @@ ok
 ```
 
 With 8 nodes and 4 locations at your proposal, you can get a target n-val of 8 and a location nval of 4.
-That means that you can configure the system in such a way that you can loose 3 locations or 3 nodes and
+That means that you can configure the system in such a way that you can lose 3 locations or 3 nodes and
 still have one copy of all data available. Moreover, you have enough additional nodes to act take over the role of the lost nodes.
 
 ## Rebar3 plugin
@@ -81,3 +81,23 @@ Usage: rebar3 ring_calculator [-s <ring_size>] [-n <nodes>]
   -v, --verbose    print computation details
 ```
 
+## Elixir
+
+```elixir
+iex> Mix.install([{:ring_calculator, [github: "OpenRiak/ring_calculator", branch: "main"]}])
+iex> :ring_calculator.nvals(32, 8, 3)
+........................................x
+Best solution:
+Target Nval 8
+Location val 2
+Config [4,4]
+Ring: A1 B1 A2 B2 A3 B3 A4 B4 A1 B1 A2 B2 A3 B3 A4 B4 A1 B1 A2 B2 A3 B3 A4 B4 A1 B1 A2 B2 A3 B3 A4 B4 (0 violations)
+:ok
+```
+
+If you would like to be able to use `ring_calculator` from a mix project you can add the following
+dependency to your `mix.exs` deps.
+
+```elixir
+{:ring_calculator, github: "OpenRiak/ring_calculator", runtime: false}
+```
